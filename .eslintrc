@@ -1,0 +1,23 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "camelcase": ["warn", { "properties": "never" }],
+    "eqeqeq": ["warn", "smart"],
+    "curly": ["error", "multi-line"],
+    "no-alert": "warn",
+    "indent": ["warn", 4, { "SwitchCase": 1 }],
+    "linebreak-style": ["error", "unix"],
+    "no-octal": "error",
+    "no-redeclare": "error",
+    "no-delete-var": "error",
+    "no-mixed-spaces-and-tabs": "warn",
+    "no-self-assign": ["error", {"props": true}],
+    "comma-dangle": ["error", {
+      "arrays": "never",
+      "objects": "never",
+      "imports": "never",
+      "exports": "never",
+      "functions": "ignore"
+    }]
+  }
+}
