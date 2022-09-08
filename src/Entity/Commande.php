@@ -18,7 +18,7 @@ class Commande
     #[ORM\Column]
     private ?int $number = null;
 
-    #[ORM\ManyToMany(targetEntity: product::class)]
+    #[ORM\ManyToMany(targetEntity: Product::class)]
     private Collection $products;
 
     #[ORM\ManyToOne(inversedBy: 'commandes')]

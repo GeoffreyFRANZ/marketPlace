@@ -55,6 +55,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commande::class)]
     private Collection $commandes;
 
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Panier $panier = null;
+
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
@@ -240,6 +243,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $commande->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPanier(): ?Panier
+    {
+        return $this->panier;
+    }
+
+    public function setPanier(Panier $panier): self
+    {
+        // set the owning side of the relation if necessary
+        if ($panier->getUser() !== $this) {
+            $panier->setUser($this);
+        }
+
+        $this->panier = $panier;
 
         return $this;
     }

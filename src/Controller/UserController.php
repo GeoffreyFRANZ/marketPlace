@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +24,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
+    #[Security(IsGranted::class, 'ROLE_ADMIN')]
     public function show(User $user): Response
     {
         return $this->render('user/show.html.twig', [
