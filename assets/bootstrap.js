@@ -2,7 +2,7 @@
 //
 // Registers Stimulus pages from pages.json and in the pages/ directory
 export const app = startStimulusApp(require.context(
-    '@symfony/stimulus-bridge/lazy-controller-loader!./pages',
+    '@symfony/stimulus-bridge/lazy-controller-loader!',
     true,
     /\.[jt]sx?$/
 ));

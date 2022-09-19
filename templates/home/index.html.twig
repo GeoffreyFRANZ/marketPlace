@@ -15,13 +15,13 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder"><a  class="mt-auto text-dark text-decoration-none " href="{{ path('app_product_show', {id: product.id}) }}">{{ product.label }}</a></h5>
                                     <!-- Product price-->
-                                    {{ product.price |format_currency('USD') }}
+                                    {{ product.price | format_currency('USD') }}
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer d-flex justify-content-between p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">more details</a></div>
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">add to cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ path('app_cart_new', {id: product.id}) }}">add to cart</a></div>
                             </div>
                         </div>
                     </div>

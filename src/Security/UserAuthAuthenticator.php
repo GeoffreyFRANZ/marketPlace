@@ -53,4 +53,13 @@ class UserAuthAuthenticator extends AbstractLoginFormAuthenticator
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
+
+    public function callShowexplain() :void
+    {
+        $this->showexplain(14);
+    }
+    public function showexplain(int $tata, ?string $toto = null)
+    {
+
+    }
 }
