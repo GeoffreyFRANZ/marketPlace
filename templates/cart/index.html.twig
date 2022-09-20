@@ -3,28 +3,31 @@
 {% block title %}Hello CartController!{% endblock %}
 
 {% block body %}
-    <table>
-        <tr>
-            <th>label</th>
-            <th>description</th>
-            <th>price</th>
-            <th>quantity</th>
-        </tr>
-        {% for product in list  %}
+    {% if list is not empty %}
+        <table>
             <tr>
-                <td>{{ product.product.label }}</td>
-                <td>{{ product.product.description }}</td>
-                <td>{{ product.product.price | format_currency('USD') }}</td>
-                <td>{{ product.quantity }}</td>
-                <td><a href="{{ path('app_cart_new', {id: product.product.id}) }}">add quantity</a></td>
-                <td><a href="{{ path('app_cart_delete', {id: product.product.id}) }}">down quantity</a></td>
-                <td><a href="{{ path('app_cart_delete_all', {id: product.product.id}) }}">delete the product</a></td>
+                <th>label</th>
+                <th>description</th>
+                <th>price</th>
+                <th>quantity</th>
             </tr>
-        {% endfor %}
-    </table>
-
+            {% for product in list  %}
+                <tr>
+                    <td>{{ product.product.label }}</td>
+                    <td>{{ product.product.description }}</td>
+                    <td>{{ product.product.price | format_currency('USD') }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td><a href="{{ path('app_cart_new', {id: product.product.id}) }}">add quantity</a></td>
+                    <td><a href="{{ path('app_cart_delete', {id: product.product.id}) }}">down quantity</a></td>
+                    <td><a href="{{ path('app_cart_delete_all', {id: product.product.id}) }}">delete the product</a></td>
+                </tr>
+            {% endfor %}
+        </table>
     <div class="text-end m-5">
         <h5>TOTAL</h5>
         <div>{{ total | format_currency('USD') }}</div>
     </div>
+        {% else %}
+         your  cart  is empty :'(
+    {% endif %}
 {% endblock %}
